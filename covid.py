@@ -24,7 +24,7 @@ class Covid(object):
         self._daily_values(key, 'new_deaths', 'deaths')
 
     def build_states(self):
-        state_list = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 
+        state_list = ['Alabama', 'Alaska', 'Arizona', 
                       'Arkansas', 'California', 'Colorado', 'Connecticut', 
                       'Delaware', 'District of Columbia', 'Florida', 'Georgia', 
                       'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
@@ -37,6 +37,7 @@ class Covid(object):
                       'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 
                       'Vermont', 'Virgin Islands', 'Virginia', 'Washington', 
                       'West Virginia', 'Wisconsin', 'Wyoming']
+                      # 'American Samoa'
 
         for s in state_list:
             self.data[s] = self._state.loc[s].copy()
