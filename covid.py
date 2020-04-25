@@ -42,45 +42,7 @@ class Covid(object):
             self.data[s] = self._state.loc[s].copy()
             self.daily(s)
 
-    # def _daily_graph(self, key, col, title):
-    #     return dcc.Graph(
-    #         id=f'{key}-{col}-daily',
-    #         figure={
-    #             'data': [
-    #                 {'x': self.data[key].index, 'y': self.data[key][f'new_{col}'], 'type': 'bar', 'name': key},
-    #             ],
-    #             'layout': {
-    #                 'title': title
-    #             }
-    #         }
-    #     )
-
-    # def _accumulated_graph(self, key, col, title):
-    #     return dcc.Graph(
-    #         id=f'{key}-{col}-accumulated',
-    #         figure={
-    #             'data': [
-    #                 {'x': self.data[key].index, 'y': self.data[key][col], 'type': 'bar', 'name': key},
-    #             ],
-    #             'layout': {
-    #                 'title': title
-    #             }
-    #         }
-    #     )
-
-    # def daily_us_cases(self):
-    #     return self._daily_graph('us', 'cases', 'US Daily Cases')
-
-    # def daily_us_deaths(self):
-    #     return self._daily_graph('us', 'deaths', 'US Daily Deaths')
-
-    # def accumulated_us_cases(self):
-    #     return self._accumulated_graph('us', 'cases', 'US Total Cases')
-
-    # def accumulated_us_deaths(self):
-    #     return self._accumulated_graph('us', 'deaths', 'US Total Deaths')
-
-    def states_dropdown(self):
+    def dropdown(self):
         return dcc.Dropdown(
             id='dropdown',
             options=[

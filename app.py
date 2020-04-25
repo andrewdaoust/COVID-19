@@ -1,7 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output  #, State
 
 from covid import Covid
 
@@ -15,8 +15,8 @@ app.layout = html.Div(children=[
     html.H1(children='COVID-19'),
     html.Div(children='Select categories to plot.'),
 
+    covid_data.dropdown(),
     html.Div(children=[
-        covid_data.states_dropdown(),
         html.H4(children='Plot type'),
         dcc.RadioItems(
             id='plot-type',
@@ -26,6 +26,9 @@ app.layout = html.Div(children=[
             ],
             value='daily'
         ),
+    ], style={'width': '10%', 'display': 'inline-block'}),
+
+    html.Div(children=[
         html.H4(children='Data type'),
         dcc.RadioItems(
             id='data-type',
@@ -35,10 +38,18 @@ app.layout = html.Div(children=[
             ],
             value='cases'
         ),
-        # html.Button('Update Chart', id='submit', n_clicks=0),
-    ]),
+    ], style={'width': '10%', 'display': 'inline-block'}),
 
     html.Div(id='chart'),
+
+    html.Footer(children=[
+        "Data from the ",
+        dcc.Link(children="New York Times", 
+            href="https://github.com/nytimes/covid-19-data",
+            refresh=True
+        ),
+        ".  Visualization by Andrew D'Aoust."
+    ]),
 ])
 
 
