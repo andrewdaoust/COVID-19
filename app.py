@@ -17,6 +17,7 @@ app.layout = html.Div(children=[
 
     html.Div(children=[
         covid_data.states_dropdown(),
+        html.H4(children='Plot type'),
         dcc.RadioItems(
             id='plot-type',
             options=[
@@ -25,6 +26,7 @@ app.layout = html.Div(children=[
             ],
             value='daily'
         ),
+        html.H4(children='Data type'),
         dcc.RadioItems(
             id='data-type',
             options=[
