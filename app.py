@@ -9,6 +9,8 @@ covid_data = Covid()
 
 app = dash.Dash(__name__)
 
+server = app.server
+
 app.layout = html.Div(children=[
     html.H1(children='COVID-19'),
     html.Div(children='Select categories to plot.'),
