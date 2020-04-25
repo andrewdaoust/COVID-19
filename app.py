@@ -82,7 +82,7 @@ def add_chart(plot_type, data_type, groups):
 
     title = f'{plot_type.title()} {data_type.title()}'
     if len(groups) == 1:
-        title = groups[0] + ' ' + title
+        title = groups[0].replace('-', ', ').replace(' city', '') + ' - ' + title
 
     return dcc.Graph(
         id='graph',

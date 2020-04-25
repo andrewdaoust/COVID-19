@@ -12,6 +12,7 @@ class Covid(object):
 
         self.daily('US')
         self.build_states()
+        self.build_counties()
 
     def _daily_values(self, key, new_col, old_col):
         shifted_col = old_col + '_shifted'
@@ -43,6 +44,18 @@ class Covid(object):
             self.data[s] = self._state.loc[s].copy()
             self.daily(s)
 
+    def build_counties(self):
+        counties_list = [
+            ('Essex', 'Massachusetts'),
+            ('Hillsborough', 'New Hampshire'),
+            ('Virginia Beach city', 'Virginia')
+        ]
+
+        for c in counties_list:
+            key = f'{c[0]}-{c[1]}'
+            self.data[key] = self._county.loc[c[1], c[0]].copy()
+            self.daily(key)
+
     def dropdown(self):
         return dcc.Dropdown(
             id='dropdown',
@@ -50,7 +63,7 @@ class Covid(object):
                 {'label': 'United States', 'value': 'US'},
                 {'label': 'Alabama', 'value': 'Alabama'},
                 {'label': 'Alaska', 'value': 'Alaska'},
-                {'label': 'American Samoa', 'value': 'American Samoa'},
+                #{'label': 'American Samoa', 'value': 'American Samoa'},
                 {'label': 'Arizona', 'value': 'Arizona'},
                 {'label': 'Arkansas', 'value': 'Arkansas'},
                 {'label': 'California', 'value': 'California'},
@@ -103,7 +116,10 @@ class Covid(object):
                 {'label': 'Washington', 'value': 'Washington'},
                 {'label': 'West Virginia', 'value': 'West Virginia'},
                 {'label': 'Wisconsin', 'value': 'Wisconsin'},
-                {'label': 'Wyoming', 'value': 'Wyoming'}
+                {'label': 'Wyoming', 'value': 'Wyoming'},
+                {'label': 'Hillsborough County, NH', 'value': 'Hillsborough-New Hampshire'},
+                {'label': 'Essex County, MA', 'value': 'Essex-Massachusetts'},
+                {'label': 'Virginia Beach, Virginia', 'value': 'Virginia Beach city-Virginia'}
             ],
             value=['US'],
             clearable=False,
