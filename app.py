@@ -8,7 +8,7 @@ from covid import Covid
 covid_data = Covid()
 
 app = dash.Dash(__name__)
-app.title = 'COVID-19'
+app.title = 'COVID-19 Tracker'
 
 server = app.server
 
