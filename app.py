@@ -23,11 +23,12 @@ app.layout = html.Div(children=[
             id='plot-type',
             options=[
                 {'label': 'Daily', 'value': 'daily'},
-                {'label': 'Total', 'value': 'total'}
+                {'label': 'Total', 'value': 'total'},
+                {'label': 'Seven Day Average', 'value': 'seven day average'}
             ],
             value='daily'
         ),
-    ], style={'width': '10%', 'display': 'inline-block'}),
+    ], style={'width': '15%', 'display': 'inline-block'}),
 
     html.Div(children=[
         html.H4(children='Data type'),
@@ -58,6 +59,8 @@ def build_data_dicts(pt, dt, groups):
     pre = ''
     if pt == 'daily':
         pre = 'new_'
+    elif pt == 'seven day average':
+        pre = 'seven_day_'
     data = []
     for group in groups:
         d = {

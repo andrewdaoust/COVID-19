@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import dash_core_components as dcc
 
 
@@ -10,7 +11,7 @@ class Covid(object):
 
         self.data = {'US': _us}
 
-        self.daily('US')
+        self.daily_and_seven_day('US')
         self.build_states()
         self.build_counties()
 
@@ -20,9 +21,26 @@ class Covid(object):
 
         self.data[key][new_col] = self.data[key][old_col] - self.data[key][shifted_col]
 
-    def daily(self, key):
+    def _seven_day(self, key, new_col, old_col):
+        for i in range(1, 7):
+            self.data[key][f'shift{i}'] = self.data[key][old_col].shift(i, fill_value=0)
+
+        self.data[key][new_col] = self.data[key][[
+            old_col,
+            'shift1',
+            'shift2',
+            'shift3',
+            'shift4',
+            'shift5',
+            'shift6'
+        ]].mean(axis=1)
+
+    def daily_and_seven_day(self, key):
         self._daily_values(key, 'new_cases', 'cases')
         self._daily_values(key, 'new_deaths', 'deaths')
+
+        self._seven_day(key, 'seven_day_cases', 'new_cases')
+        self._seven_day(key, 'seven_day_deaths', 'new_deaths')
 
     def build_states(self):
         state_list = ['Alabama', 'Alaska', 'Arizona', 
@@ -42,7 +60,7 @@ class Covid(object):
 
         for s in state_list:
             self.data[s] = self._state.loc[s].copy()
-            self.daily(s)
+            self.daily_and_seven_day(s)
 
     def build_counties(self):
         counties_list = [
@@ -55,7 +73,7 @@ class Covid(object):
         for c in counties_list:
             key = f'{c[0]}-{c[1]}'
             self.data[key] = self._county.loc[c[1], c[0]].copy()
-            self.daily(key)
+            self.daily_and_seven_day(key)
 
     def dropdown(self):
         return dcc.Dropdown(
@@ -122,7 +140,7 @@ class Covid(object):
                 {'label': 'Essex County, MA', 'value': 'Essex-Massachusetts'},
                 {'label': 'Virginia Beach, Virginia', 'value': 'Virginia Beach city-Virginia'}
             ],
-            value=['US'],
+            value=['New Hampshire', 'Massachusetts'],
             clearable=False,
             multi=True,
         )
