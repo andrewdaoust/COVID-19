@@ -24,7 +24,8 @@ app.layout = html.Div(children=[
             options=[
                 {'label': 'Daily', 'value': 'daily'},
                 {'label': 'Total', 'value': 'total'},
-                {'label': 'Seven Day Average', 'value': 'seven day average'}
+                {'label': '7-Day Average', 'value': '7 day average'},
+                {'label': '14-Day Average', 'value': '14 day average'}
             ],
             value='daily'
         ),
@@ -59,8 +60,10 @@ def build_data_dicts(pt, dt, groups):
     pre = ''
     if pt == 'daily':
         pre = 'new_'
-    elif pt == 'seven day average':
+    elif pt == '7 day average':
         pre = 'seven_day_'
+    elif pt == '14 day average':
+        pre = 'fourteen_day_'
     data = []
     for group in groups:
         d = {
