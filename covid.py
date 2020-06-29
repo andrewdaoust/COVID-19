@@ -67,7 +67,7 @@ class Covid(object):
             ('Essex', 'Massachusetts'),
             ('Hillsborough', 'New Hampshire'),
             ('Virginia Beach city', 'Virginia'),
-            ('Rensselaer', 'New York')
+            # ('Rensselaer', 'New York')
         ]
 
         for c in counties_list:
