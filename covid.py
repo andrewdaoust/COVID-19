@@ -140,7 +140,7 @@ class Covid(object):
                 {'label': 'Essex County, MA', 'value': 'Essex-Massachusetts'},
                 {'label': 'Virginia Beach, Virginia', 'value': 'Virginia Beach city-Virginia'}
             ],
-            value=['New Hampshire', 'Massachusetts'],
+            value=['New Hampshire'],
             clearable=False,
             multi=True,
         )
