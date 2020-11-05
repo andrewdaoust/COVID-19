@@ -140,7 +140,7 @@ class Covid(object):
                 {'label': 'Hillsborough County, NH', 'value': 'Hillsborough-New Hampshire'},
                 {'label': 'Essex County, MA', 'value': 'Essex-Massachusetts'},
                 {'label': 'Virginia Beach, Virginia', 'value': 'Virginia Beach city-Virginia'},
-                {'label': 'Rockingham Country, NH', 'value': 'Rockingham-New Hampshire'}
+                {'label': 'Rockingham County, NH', 'value': 'Rockingham-New Hampshire'}
             ],
             value=['New Hampshire'],
             clearable=False,
