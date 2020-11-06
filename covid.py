@@ -67,8 +67,16 @@ class Covid(object):
             ('Essex', 'Massachusetts'),
             ('Hillsborough', 'New Hampshire'),
             ('Virginia Beach city', 'Virginia'),
-            ('Rockingham', 'New Hampshire')
-            # ('Rensselaer', 'New York')
+            ('Rockingham', 'New Hampshire'),
+            ('Grafton', 'New Hampshire'),
+            ('Carroll', 'New Hampshire'),
+            ('Belknap', 'New Hampshire'),
+            ('Cheshire', 'New Hampshire'),
+            ('Coos', 'New Hampshire'),
+            ('Merrimack', 'New Hampshire'),
+            ('Strafford', 'New Hampshire'),
+            ('Sullivan', 'New Hampshire')
+            ('Rensselaer', 'New York'),
         ]
 
         for c in counties_list:
@@ -140,7 +148,16 @@ class Covid(object):
                 {'label': 'Hillsborough County, NH', 'value': 'Hillsborough-New Hampshire'},
                 {'label': 'Essex County, MA', 'value': 'Essex-Massachusetts'},
                 {'label': 'Virginia Beach, Virginia', 'value': 'Virginia Beach city-Virginia'},
-                {'label': 'Rockingham County, NH', 'value': 'Rockingham-New Hampshire'}
+                {'label': 'Rockingham County, NH', 'value': 'Rockingham-New Hampshire'},
+                {'label': 'Grafton County, NH', 'value': 'Grafton-New Hampshire'},
+                {'label': 'Carroll County, NH', 'value': 'Carroll-New Hampshire'},
+                {'label': 'Belknap County, NH', 'value': 'Belknap-New Hampshire'},
+                {'label': 'Cheshire County, NH', 'value': 'Cheshire-New Hampshire'},
+                {'label': 'Coos County, NH', 'value': 'Coos-New Hampshire'},
+                {'label': 'Merrimack County, NH', 'value': 'Merrimack-New Hampshire'},
+                {'label': 'Strafford County, NH', 'value': 'Strafford-New Hampshire'},
+                {'label': 'Sullivan County, NH', 'value': 'Sullivan-New Hampshire'},
+                {'label': 'Rensselaer County, NY', 'value': 'Rensselaer-New York'},
             ],
             value=['New Hampshire'],
             clearable=False,
