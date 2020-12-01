@@ -21,6 +21,10 @@ class Covid(object):
 
         self.data[key][new_col] = self.data[key][old_col] - self.data[key][shifted_col]
 
+        # Set negatives to 0
+        mask = self.data[key][new_col] < 0
+        self.data[key].loc[mask, new_col] = 0
+
     def _7_14day(self, key, old_col):
         new_removed = old_col.replace('new_', '')
         seven_col = 'seven_day_' + new_removed
