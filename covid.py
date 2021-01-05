@@ -21,20 +21,23 @@ class Covid(object):
 
         self.data[key][new_col] = self.data[key][old_col] - self.data[key][shifted_col]
 
-        # Split results from 11/27/20 in half since it includes Thanksgiving day data
-        tgiving_split = self.data[key].at[pd.to_datetime('2020-11-27'), new_col] / 2
-        self.data[key].at[pd.to_datetime('2020-11-26'), new_col] = tgiving_split
-        self.data[key].at[pd.to_datetime('2020-11-27'), new_col] = tgiving_split
+        if self.data[key].at[pd.to_datetime('2020-11-26'), new_col] == 0:
+            # Split results from 11/27/20 in half since it includes Thanksgiving day data
+            tgiving_split = self.data[key].at[pd.to_datetime('2020-11-27'), new_col] / 2
+            self.data[key].at[pd.to_datetime('2020-11-26'), new_col] = tgiving_split
+            self.data[key].at[pd.to_datetime('2020-11-27'), new_col] = tgiving_split
 
-        # Split results from 12/26/20 in half since it includes Christmas day data
-        xmas_split = self.data[key].at[pd.to_datetime('2020-12-26'), new_col] / 2
-        self.data[key].at[pd.to_datetime('2020-12-25'), new_col] = xmas_split
-        self.data[key].at[pd.to_datetime('2020-12-26'), new_col] = xmas_split
+        if self.data[key].at[pd.to_datetime('2020-12-25'), new_col] == 0:
+            # Split results from 12/26/20 in half since it includes Christmas day data
+            xmas_split = self.data[key].at[pd.to_datetime('2020-12-26'), new_col] / 2
+            self.data[key].at[pd.to_datetime('2020-12-25'), new_col] = xmas_split
+            self.data[key].at[pd.to_datetime('2020-12-26'), new_col] = xmas_split
 
-        # Split results from 1/2/21 in half since it includes New Year's day data
-        ny_split = self.data[key].at[pd.to_datetime('2021-01-02'), new_col] / 2
-        self.data[key].at[pd.to_datetime('2021-01-01'), new_col] = ny_split
-        self.data[key].at[pd.to_datetime('2021-01-02'), new_col] = ny_split
+        if self.data[key].at[pd.to_datetime('2021-01-01'), new_col] == 0:
+            # Split results from 1/2/21 in half since it includes New Year's day data
+            ny_split = self.data[key].at[pd.to_datetime('2021-01-02'), new_col] / 2
+            self.data[key].at[pd.to_datetime('2021-01-01'), new_col] = ny_split
+            self.data[key].at[pd.to_datetime('2021-01-02'), new_col] = ny_split
         
 
         # Set negatives to 0
